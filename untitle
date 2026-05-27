@@ -1,0 +1,51 @@
+const info = {
+    "firstName":"Nader",
+    "job":"Web Developer",
+    "lastName":"Elsadig",
+    "nameOnGithub":"naderStack",
+    "age":27,
+    "fullName":"Nader Elsadig",
+    "bio":"i am developer backend nodejs ",
+    "progress":{
+                "frontend":{
+                    "0":{"name":"html","progress":"85"},
+                    "1":{"name":"css","progress":"80"},
+                    "2":{"name":"javaScript","progress":"80"},
+                    "3":{"name":"bootstrap","progress":"70"},
+                    "4":{"name":"react","progress":"0"},
+                },
+                "backend":{
+                    "0":{"name":"Node","progress":"40"},
+                    "1":{"name":"ejs","progress":"70"},
+                },
+                "database":{
+                    "0":{"name":"sqlite","progress":"80"},
+                    "1":{"name":"mysql","progress":"90"},
+                    "1":{"name":"postgresql","progress":"70"},
+                    "1":{"name":"mongoDB","progress":"0"},
+                },
+                "tool":{
+                    "0":{"name":"git","progress":"40"},
+                    "1":{"name":"Docker","progress":"0"},
+                },
+                "os":{
+                    "0":{"name":"window","progress":"90"},
+                    "1":{"name":"linux","progress":"60"},
+                    "1":{"name":"macos","progress":"50"},
+                    }
+    },
+"level" : {
+    "0": {"name": "Beginner", "desc": "أنا أستطيع كتابة المتغيرات، الحلقات، والجمل الشرطية الأساسية"},
+    "1": {"name": "Elementary", "desc": "أنا أستطيع كتابة دوال بسيطة والتعامل مع القوائم والمصفوفات"},
+    "2": {"name": "Intermediate", "desc": "أنا أستطيع فهم OOP، التعامل مع الأخطاء، وقراءة وثائق API"},
+    "3": {"name": "Upper-Intermediate", "desc": "أنا أستطيع استخدام الخوارزميات الأساسية، Git، وتنقيح الأخطاء (debugging)"},
+    "4": {"name": "Advanced", "desc": "أنا أستطيع كتابة كود معياري، تطبيق أنماط التصميم، والتعامل مع قواعد البيانات"},
+    "5": {"name": "Expert", "desc": "أنا أستطيع تصميم أنظمة قابلة للتوسع، تحليل Big O، ومراجعة كود الآخرين"},
+    "6": {"name": "Solutions Architect", "desc": "أنا أستطيع تحديد البنية التحتية والتقنيات المناسبة للمشاريع المتكاملة"},
+    "7": {"name": "Open Source Contributor", "desc": "أنا أستطيع المساهمة في مشاريع مفتوحة المصدر كبرى مثل Linux أو TensorFlow"},
+    "8": {"name": "Global Production Level", "desc": "أنا أستطيع بناء كود يُستخدم في الإنتاج لشركات كبرى مثل Google أو Microsoft"},
+    "9": {"name": "Standards Contributor", "desc": "أنا أستطيع المشاركة في كتابة معايير عالمية مثل ISO أو IEEE أو RFC"}
+},
+"dateCreate":"2026-05-26",
+
+}

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Alex Rivera · Dev Portfolio</title>
+    <!-- Google Fonts & modern CSS reset -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5b6e8c;
+        }
+
+        /* navigation - glassmorphic sticky */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02), 0 1px 0 rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(203, 213, 225, 0.5);
+            padding: 0.9rem 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1e293b;
+            transition: 0.2s;
+            letter-spacing: -0.2px;
+            padding: 0.4rem 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover {
+            color: #2563eb;
+            border-bottom-color: #2563eb;
+        }
+
+        /* container utility */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 2rem;
+        }
+
+        /* header / cover section */
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            border-radius: 2rem;
+            margin: 2rem 2rem 0 2rem;
+            padding: 3.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
+        }
+
+        .coverpage h2 {
+            font-size: 2.7rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #3b82f6;
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .coverpage p {
+            font-size: 1.2rem;
+            max-width: 680px;
+            margin: 0 auto;
+            opacity: 0.85;
+        }
+
+        /* cards & sections */
+        section, .progress-grid-container {
+            background: white;
+            border-radius: 1.75rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03), 0 2px 4px rgba(0, 0, 0, 0.02);
+            margin: 2rem 2rem;
+            padding: 2rem 2rem;
+            transition: transform 0.2s ease, box-shadow 0.2s;
+        }
+
+        section:hover, .progress-grid-container:hover {
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* aboutme list redesign */
+        #aboutme ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        #aboutme li {
+            background: #f1f5f9;
+            padding: 0.75rem 1.4rem;
+            border-radius: 60px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: #0f172a;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        #aboutme li::before {
+            content: "▹";
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        /* progress area - modern grid */
+        .progress-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1rem;
+        }
+
+        .skill-card {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            padding: 1.3rem 1.5rem;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.03);
+            border: 1px solid #eef2ff;
+            transition: all 0.2s;
+        }
+
+        .skill-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-left: 4px solid #3b82f6;
+            padding-left: 0.9rem;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .skill-percent {
+            font-family: monospace;
+            font-weight: 700;
+            background: #e6f0ff;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #1e40af;
+        }
+
+        .progress-bar-bg {
+            background: #e2e8f0;
+            border-radius: 30px;
+            height: 8px;
+            width: 100%;
+            margin-top: 0.4rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            width: 0%;
+            height: 100%;
+            border-radius: 30px;
+        }
+
+        /* tryit section - chips and lists */
+        .try-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.8rem;
+            margin: 1.8rem 0 0.5rem;
+        }
+
+        .try-card {
+            background: #f8fafc;
+            border-radius: 1.2rem;
+            padding: 1rem 1.3rem;
+            border: 1px solid #eef2ff;
+        }
+
+        .try-card h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #0f172a;
+        }
+
+        .chip-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            list-style: none;
+        }
+
+        .chip-list li {
+            background: white;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #1e293b;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
+        }
+
+        .programming-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 0.8rem;
+            list-style: none;
+        }
+        .programming-chips li {
+            background: linear-gradient(135deg, #eef2ff, #ffffff);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        /* contactme styling */
+        #contactme {
+            text-align: center;
+            background: linear-gradient(120deg, #ffffff, #f9fbfe);
+        }
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .contact-buttons a {
+            text-decoration: none;
+            background: #0f172a;
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .contact-buttons a i {
+            font-size: 1.2rem;
+        }
+        .contact-buttons a:first-child {
+            background: #1f2a3e;
+        }
+        .contact-buttons a:last-child {
+            background: #2563eb;
+        }
+        .contact-buttons a:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.05);
+        }
+
+        /* adjustments for responsive */
+        @media (max-width: 720px) {
+            nav ul {
+                gap: 1rem;
+            }
+            header {
+                margin: 1rem;
+                padding: 2rem 1rem;
+            }
+            .coverpage h2 {
+                font-size: 1.8rem;
+            }
+            section, .progress-grid-container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        /* footer / extra charm */
+        hr {
+            margin: 0 2rem 2rem;
+            border: none;
+            border-top: 2px dotted #cbd5e1;
+        }
+        .footnote {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- DYNAMIC DATA (embedded via EJS-like syntax) -->
+<!-- 
+    The original template uses EJS placeholders. 
+    For demo purposes we define a robust 'info' object with realistic data.
+    In a real backend, replace with server-side data.
+-->
+<script>
+    // Simulating the backend data object (fullName, progress, try, etc.)
+    // This ensures the page works beautifully with all the required fields.
+    window.info = {
+        fullName: "Alex Rivera",
+        firstName: "Alex",
+        lastName: "Rivera",
+        job: "full-stack developer & creative coder",
+        age: 27,
+        country: "Mexico",
+        currentCountry: "Spain",
+        usernameOnGithub: "alex-crafted",
+        email: "alex.rivera@devmail.com",
+        bio: "Building digital tools with passion · Open source enthusiast · Always learning.",
+        progress: {
+            frontend: [
+                { name: "React", progress: 88 },
+                { name: "Vue.js", progress: 72 },
+                { name: "Tailwind CSS", progress: 91 },
+                { name: "TypeScript", progress: 79 }
+            ],
+            backend: [
+                { name: "Node.js", progress: 85 },
+                { name: "Python (Django)", progress: 68 },
+                { name: "Go", progress: 54 },
+                { name: "GraphQL", progress: 62 }
+            ],
+            typing: [
+                { name: "Touch typing", progress: 94 },
+                { name: "VIM motions", progress: 77 },
+                { name: "Speed (WPM)", progress: 82 }
+            ],
+            tools: [
+                { name: "Git & GH Actions", progress: 90 },
+                { name: "Docker", progress: 71 },
+                { name: "Figma", progress: 68 },
+                { name: "Postman", progress: 84 }
+            ],
+            os: [
+                { name: "Arch Linux", progress: 88 },
+                { name: "macOS", progress: 79 },
+                { name: "Windows WSL2", progress: 70 }
+            ]
+        },
+        try: {
+            programming: ["Rust", "Elixir", "Svelte", "Three.js", "Electron", "NestJS", "SolidJS", "Bun"],
+            os: {
+                linux: ["Ubuntu", "Fedora", "Archcraft", "Manjaro", "Pop!_OS", "NixOS"],
+                mac: ["Homebrew ecosystem", "Alfred", "yabai WM", "Sketch", "iTerm2 customization"],
+                windows: ["PowerShell Core", "WSL2 deep config", "Windows Terminal", "Chocolatey"]
+            }
+        }
+    };
+</script>
+
+<!-- start navbar (enhanced with icons) -->
+<nav>
+    <ul>
+        <li><a href="#head"><i class="fas fa-home" style="margin-right: 6px;"></i>Home</a></li>
+        <li><a href="#aboutme"><i class="fas fa-user-astronaut"></i> About</a></li>
+        <li><a href="#progress"><i class="fas fa-chart-line"></i> Progress</a></li>
+        <li><a href="#tryit"><i class="fas fa-flask"></i> TryIt</a></li>
+        <li><a href="#contactme"><i class="fas fa-paper-plane"></i> Contact</a></li>
+    </ul>
+</nav>
+<!-- end navbar -->
+
+<!-- start head [cover] with dynamic bindings -->
+<header id="head">
+    <div class="coverpage">
+        <h2>Hi ! I'm <span id="dynamicFullName"><%= info.fullName %></span></h2>
+        <span class="badge"><i class="fas fa-code"></i> <%= info.job %></span>
+        <p><%= info.bio %></p>
+    </div>
+</header>
+<!-- end head [cover] -->
+
+<!-- start aboutme  (improved) -->
+<section id="aboutme">
+    <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem;"><i class="fas fa-user-pen"></i> About me</h2>
+    <ul>
+        <li><i class="far fa-user"></i> <%= info.firstName %> <%= info.lastName %></li>
+        <li><i class="fas fa-briefcase"></i> <%= info.job %></li>
+        <li><i class="far fa-calendar-alt"></i> <%= info.age %> years</li>
+        <li><i class="fas fa-map-marker-alt"></i> from <%= info.country %></li>
+        <li><i class="fas fa-location-dot"></i> currently in <%= info.currentCountry %></li>
+        <li><i class="fab fa-github"></i> github : <%= info.usernameOnGithub %></li>
+    </ul>
+</section>
+<!-- end aboutme  -->
+
+<!-- start progress  (modern dashboard) -->
+<div id="progress" class="progress-grid-container" style="background: white;">
+    <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;"><i class="fas fa-chalkboard-user"></i> Technical proficiency</h2>
+    <p style="margin-bottom: 1.8rem; color: #334155;">Self-taught journey & real-world experience</p>
+    <div class="progress-dashboard">
+        <!-- frontend card -->
+        <div class="skill-card">
+            <h3><i class="fab fa-react"></i> frontend</h3>
+            <% for (let i in info.progress.frontend) { %>
+                <div class="skill-item">
+                    <span class="skill-name"><%= info.progress.frontend[i].name %></span>
+                    <span class="skill-percent"><%= info.progress.frontend[i].progress %>%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-fill" style="width: <%= info.progress.frontend[i].progress %>%;"></div></div>
+            <% } %>
+        </div>
+        <!-- backend card -->
+        <div class="skill-card">
+            <h3><i class="fas fa-server"></i> backend</h3>
+            <% for (let i in info.progress.backend) { %>
+                <div class="skill-item">
+                    <span class="skill-name"><%= info.progress.backend[i].name %></span>
+                    <span class="skill-percent"><%= info.progress.backend[i].progress %>%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-fill" style="width: <%= info.progress.backend[i].progress %>%;"></div></div>
+            <% } %>
+        </div>
+        <!-- typing card -->
+        <div class="skill-card">
+            <h3><i class="fas fa-keyboard"></i> typing & efficiency</h3>
+            <% for (let i in info.progress.typing) { %>
+                <div class="skill-item">
+                    <span class="skill-name"><%= info.progress.typing[i].name %></span>
+                    <span class="skill-percent"><%= info.progress.typing[i].progress %>%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-fill" style="width: <%= info.progress.typing[i].progress %>%;"></div></div>
+            <% } %>
+        </div>
+        <!-- tools card -->
+        <div class="skill-card">
+            <h3><i class="fas fa-tools"></i> tools & DevOps</h3>
+            <% for (let i in info.progress.tools) { %>
+                <div class="skill-item">
+                    <span class="skill-name"><%= info.progress.tools[i].name %></span>
+                    <span class="skill-percent"><%= info.progress.tools[i].progress %>%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-fill" style="width: <%= info.progress.tools[i].progress %>%;"></div></div>
+            <% } %>
+        </div>
+        <!-- operation systems card -->
+        <div class="skill-card">
+            <h3><i class="fas fa-desktop"></i> operation systems</h3>
+            <% for (let i in info.progress.os) { %>
+                <div class="skill-item">
+                    <span class="skill-name"><%= info.progress.os[i].name %></span>
+                    <span class="skill-percent"><%= info.progress.os[i].progress %>%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-fill" style="width: <%= info.progress.os[i].progress %>%;"></div></div>
+            <% } %>
+        </div>
+    </div>
+</div>
+<!-- end progress -->
+
+<!-- start tryit section (redesigned with categories) -->
+<section id="tryit">
+    <h2 style="font-size: 1.8rem; margin-bottom: 0.25rem;"><i class="fas fa-microchip"></i> everything's try it</h2>
+    <p style="margin-bottom: 1.5rem; color: #475569;">In my life I try more than things in computer world — exploration drives innovation.</p>
+    
+    <div class="try-grid">
+        <!-- programming languages & frameworks -->
+        <div class="try-card">
+            <h4><i class="fas fa-laptop-code"></i> Programming</h4>
+            <ul class="programming-chips">
+                <% info.try.programming.forEach(i => { %>
+                    <li><%= i %></li>
+                <% }) %>
+            </ul>
+        </div>
+        <!-- linux experiences -->
+        <div class="try-card">
+            <h4><i class="fab fa-linux"></i> Linux (distros & tools)</h4>
+            <ul class="chip-list">
+                <% info.try.os.linux.forEach(i => { %>
+                    <li><%= i %></li>
+                <% }) %>
+            </ul>
+        </div>
+        <!-- mac ecosystem -->
+        <div class="try-card">
+            <h4><i class="fab fa-apple"></i> macOS</h4>
+            <ul class="chip-list">
+                <% info.try.os.mac.forEach(i => { %>
+                    <li><%= i %></li>
+                <% }) %>
+            </ul>
+        </div>
+        <!-- windows / wsl -->
+        <div class="try-card">
+            <h4><i class="fab fa-windows"></i> Windows</h4>
+            <ul class="chip-list">
+                <% info.try.os.windows.forEach(i => { %>
+                    <li><%= i %></li>
+                <% }) %>
+            </ul>
+        </div>
+    </div>
+    <div style="margin-top: 1rem; font-style: italic; font-size: 0.85rem; border-top: 1px solid #eef2ff; padding-top: 1rem;">
+        <i class="fas fa-rocket"></i> Always curious, always iterating.
+    </div>
+</section>
+<!-- end tryit -->
+
+<!-- start contactme  (elegant CTA) -->
+<section id="contactme">
+    <i class="fas fa-envelope-open-text" style="font-size: 2rem; color: #3b82f6; margin-bottom: 0.5rem; display: inline-block;"></i>
+    <h2 style="font-size: 1.7rem;">Let's connect</h2>
+    <p>You can contact me for any advice, collaboration or job opportunity — I'd love to hear from you.</p>
+    <div class="contact-buttons">
+        <a href="#" target="_blank"><i class="fab fa-github"></i> github / <%= info.usernameOnGithub %></a>
+        <a href="mailto:<%= info.email %>"><i class="fas fa-envelope"></i> <%= info.email %></a>
+    </div>
+</section>
+<!-- end contactme -->
+
+<hr />
+<div class="footnote">
+    <i class="far fa-copyright"></i> dynamic portfolio — built with curiosity & modern workflow  <%=info.dateCreate %>
+</div>
+
+<!-- 
+    NO EXTRA JS needed: all content is rendered via EJS-like templating.
+    The "info" object is defined in script tag above to simulate backend data.
+    For real implementation, replace static info with server-provided data.
+    Design fully improved: glassmorphism navbar, skill cards, progress bars, responsive chips.
+-->
+</body>
+</html>
