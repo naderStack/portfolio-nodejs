@@ -1,4 +1,4 @@
-const info = {
+{
     "firstName":"Nader",
     "job":"Web Developer",
     "lastName":"Elsadig",
@@ -47,5 +47,4 @@ const info = {
     "9": {"name": "Standards Contributor", "desc": "أنا أستطيع المشاركة في كتابة معايير عالمية مثل ISO أو IEEE أو RFC"}
 },
 "dateCreate":"2026-05-26",
-
 }
